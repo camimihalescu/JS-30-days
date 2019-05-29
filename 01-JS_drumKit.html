@@ -58,18 +58,22 @@
 
     <script>
         function playSound(event) { //when i press any key run a function with an given event
-            const audio = document.querySelector(`audio[data-click="${event.keyCode}"]`); //make an const that connects the event with audio 
+            const audio = document.querySelector(
+                `audio[data-click="${event.keyCode}"]`); //make an const that connects the event with audio 
             if (!audio) return; //stop the function if there is not any audio when i press a key
-            audio.currentTime=0;//rewind to the start
+            audio.currentTime = 0; //rewind to the start
             audio.play();
-            const animation = document.querySelector(`.click[data-click="${event.keyCode}"]`);//make an const that connects the event with animation
-            animation.classList.add("playing");//adds the playing class
+            const animation = document.querySelector(
+                `.click[data-click="${event.keyCode}"]`); //make an const that connects the event with animation
+            animation.classList.add("playing"); //adds the playing class
         }
-        function removeTransition(event){
+
+        function removeTransition(event) {
             this.classList.remove("playing"); //removes the plaing class
         }
         const clickers = document.querySelectorAll(".click")
-        clickers.forEach(animation => animation.addEventListener("transitionend", removeTransition));//for each animation, after the transition, remove the playing class
+        clickers.forEach(animation => animation.addEventListener("transitionend",
+            removeTransition)); //for each animation, after the transition, remove the playing class
         window.addEventListener("keydown", playSound);
     </script>
 </body>
